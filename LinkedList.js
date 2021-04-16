@@ -55,6 +55,38 @@ class LinkedList {
      return('no match found')
   }
 
+  find_one_previous(val) {
+    let current_node = this.head;
+    while (current_node.next) {
+      console.log(current_node.next.value)
+      if (val === current_node.next.value) {
+       console.log('found a match')
+       return(current_node)
+      }
+      current_node = current_node.next;
+    }
+     return('no match found')
+    }
+
+
+    delete_one(val) {
+
+    let current_node = this.head;
+
+    while (current_node.next) {
+      if(current_node.next==null){console.log('end')}
+      if (val === current_node.next.value) {
+       current_node.next = current_node.next.next
+       return current_node
+      }else{
+      current_node = current_node.next;
+      }
+    }
+    return('no match found')
+  }
+
+
+
   print_list() {
     let current_node = this.head;
     while (current_node) {
@@ -83,6 +115,10 @@ ok.append(37)
 ok.prepend(5)
 ok.prepend(33)
 
-// ok.to_array();
-// ok.print_list();
-console.log(ok.find_one(5))
+ok.to_array();
+ok.print_list();
+// console.log(ok.find_one(5))
+console.log(ok.delete_one(37))
+
+ok.print_list();
+ok.to_array();
